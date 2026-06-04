@@ -30,7 +30,9 @@ jobs:
       - name: Build PCleaner.exe
         run: >
           python -m PyInstaller --noconfirm --clean
-          --onefile --windowed --name PCleaner pcleaner.py
+          --onefile --windowed --name PCleaner
+          --icon icon.ico --add-data "icon.ico;."
+          pcleaner.py
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4

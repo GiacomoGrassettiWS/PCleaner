@@ -9,6 +9,8 @@ python -m PyInstaller --noconfirm --clean ^
     --onefile ^
     --windowed ^
     --name PCleaner ^
+    --icon icon.ico ^
+    --add-data "icon.ico;." ^
     pcleaner.py
 
 if errorlevel 1 (

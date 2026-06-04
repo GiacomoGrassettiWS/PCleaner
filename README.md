@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="icon.png" width="128" alt="PCleaner icon">
+</p>
+
 # PCleaner
 
 A lightweight desktop disk-space analyzer for **Windows**. It scans a drive

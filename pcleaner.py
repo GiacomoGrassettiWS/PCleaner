@@ -31,6 +31,12 @@ except ImportError:
 # Utilities
 # ---------------------------------------------------------------------------
 
+def resource_path(name):
+    """Path to a bundled resource, working both from source and frozen exe."""
+    base = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base, name)
+
+
 def human_size(num):
     """Convert a number of bytes into a readable string (KB, MB, GB...)."""
     for unit in ("B", "KB", "MB", "GB", "TB", "PB"):
@@ -358,6 +364,10 @@ class App(tk.Tk):
         self.title("PCleaner - Disk space analyzer")
         self.geometry("1150x680")
         self.minsize(900, 500)
+        try:
+            self.iconbitmap(resource_path("icon.ico"))
+        except Exception:
+            pass
 
         self.scanner = Scanner()
         self.scan_thread = None
