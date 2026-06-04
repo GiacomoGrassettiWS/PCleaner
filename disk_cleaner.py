@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Disk Cleaner - Disk space analyzer for Windows
-----------------------------------------------
+PCleaner - Disk space analyzer for Windows
+------------------------------------------
 Scans a drive and shows the largest files and folders, marking which are
 safe to delete, which to review and which to keep, together with the
 program associated with each file.
 
-Run:      python disk_cleaner.py
+Run:      python pcleaner.py
 Requires: Python 3.8+ with Tkinter (both bundled with Windows installers).
 """
 
@@ -355,7 +355,7 @@ class App(tk.Tk):
 
     def __init__(self):
         super().__init__()
-        self.title("Disk Cleaner - Space analyzer")
+        self.title("PCleaner - Disk space analyzer")
         self.geometry("1150x680")
         self.minsize(900, 500)
 
