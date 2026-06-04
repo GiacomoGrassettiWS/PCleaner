@@ -1,4 +1,4 @@
-# Disk Cleaner
+# PCleaner
 
 A lightweight desktop disk-space analyzer for **Windows**. It scans a drive
 and shows the largest files and folders, telling you which are **safe to
@@ -34,7 +34,7 @@ runtime dependencies**.
 ## Run from source
 
 ```powershell
-python disk_cleaner.py
+python pcleaner.py
 ```
 
 > Tip: to scan the whole `C:` drive without "access denied" errors, run it as
@@ -50,7 +50,7 @@ pip install pyinstaller
 .\build.bat
 ```
 
-The resulting `DiskCleaner.exe` will be in the `dist` folder.
+The resulting `PCleaner.exe` will be in the `dist` folder.
 
 ## Usage
 
