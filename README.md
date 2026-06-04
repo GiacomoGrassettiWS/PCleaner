@@ -52,6 +52,22 @@ pip install pyinstaller
 
 The resulting `PCleaner.exe` will be in the `dist` folder.
 
+## Automated releases (GitHub Actions)
+
+This repo includes a workflow (`.github/workflows/release.yml`) that builds the
+`.exe` on a Windows runner and publishes a GitHub Release automatically.
+
+To cut a new release, push a version tag:
+
+```powershell
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+The workflow then builds `PCleaner.exe` and attaches it to a new release named
+after the tag. You can also trigger a build manually from the **Actions** tab
+(it uploads the `.exe` as a build artifact, without creating a release).
+
 ## Usage
 
 1. Choose the drive/folder (default `C:\`).

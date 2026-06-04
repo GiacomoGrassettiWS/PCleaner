@@ -1,0 +1,47 @@
+name: Build and Release
+
+# Runs when you push a version tag like v1.0.0, or manually from the
+# Actions tab (workflow_dispatch).
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write   # needed to create the release and upload assets
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install PyInstaller
+        run: python -m pip install --upgrade pip pyinstaller
+
+      - name: Build PCleaner.exe
+        run: >
+          python -m PyInstaller --noconfirm --clean
+          --onefile --windowed --name PCleaner pcleaner.py
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PCleaner-exe
+          path: dist/PCleaner.exe
+
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          name: PCleaner ${{ github.ref_name }}
+          files: dist/PCleaner.exe
+          generate_release_notes: true
